@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class frameworks extends Model
+class Frameworks extends Model
 {
   protected $table = 'frameworks';
 
@@ -13,9 +13,13 @@ class frameworks extends Model
 
   public $timestamps = false;
 
-  public function getData()
+  public function getData($type=null)
   {
-    $data = DB::table($this->table)->get();
+    $query = DB::table($this->table);
+
+    if($type != null) $query->where('type', $type);
+
+    $data = $query->get();
 
     return $data;
   }

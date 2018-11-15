@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('sample/model', 'SampleController@model');
+Route::get('sample/model/{type?}', 'SampleController@model');
